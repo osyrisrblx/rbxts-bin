@@ -22,7 +22,7 @@ Adds the item into the Bin, will return the item you passed in.
 The returned value is useful for instances:
 ```TS
 const part = this.bin.add(new Instance("Part"));
-this.bin.add(part.Touched.Connect(() => print("Touched!"));
+this.bin.add(part.Touched.Connect(() => print("Touched!")));
 
 // later..
 
