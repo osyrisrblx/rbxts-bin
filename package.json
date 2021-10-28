@@ -1,7 +1,7 @@
 {
   "name": "@rbxts/bin",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Manages things to be cleaned up later",
   "main": "out/init.lua",
   "scripts": {
     "build": "rbxtsc",
@@ -9,8 +9,12 @@
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "osyrisrblx",
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/osyrisrblx/rbxts-bin.git"
+	},
+  "license": "MIT",
   "types": "out/index.d.ts",
   "files": [
     "out"
