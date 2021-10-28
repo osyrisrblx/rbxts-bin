@@ -2,7 +2,6 @@
 
 A super simple alternative to Maid.
 
-
 ### `Bin.Item`
 ```TS
 type Bin.Item =
