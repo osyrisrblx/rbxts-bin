@@ -1,14 +1,15 @@
 export namespace Bin {
 	export type Item = (() => unknown) | RBXScriptConnection | { destroy(): void } | { Destroy(): void };
-	export type Node = { next?: Bin.Node; item: Bin.Item };
 }
+
+type Node = { next?: Node; item: Bin.Item };
 
 /**
  * Tracks connections, instances, functions, and objects to be later destroyed.
  */
 export class Bin {
-	private head: Bin.Node | undefined;
-	private tail: Bin.Node | undefined;
+	private head: Node | undefined;
+	private tail: Node | undefined;
 
 	/**
 	 * Adds an item into the Bin. This can be a:
@@ -17,7 +18,7 @@ export class Bin {
 	 * - Object with `.destroy()` or `.Destroy()`
 	 */
 	public add<T extends Bin.Item>(item: T): T {
-		const node: Bin.Node = { item };
+		const node: Node = { item };
 		this.head ??= node;
 		if (this.tail) this.tail.next = node;
 		this.tail = node;
