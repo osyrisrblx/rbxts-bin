@@ -37,3 +37,9 @@ Destroys all items currently in the Bin:
 - Functions will be called
 - RBXScriptConnections will be disconnected
 - Objects will be `.destroy()`-ed
+
+### `Bin.isEmpty`
+```TS
+public isEmpty(): boolean;
+```
+Checks whether the Bin is empty.
