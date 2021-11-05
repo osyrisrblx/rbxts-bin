@@ -45,4 +45,11 @@ export class Bin {
 			this.head = this.head.next;
 		}
 	}
+
+	/**
+	 * Checks whether the Bin is empty.
+	 */
+	public isEmpty(): boolean {
+		return this.head !== undefined;
+	}
 }
