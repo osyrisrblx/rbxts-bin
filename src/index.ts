@@ -25,13 +25,6 @@ export class Bin {
 	}
 
 	/**
-	 * Checks whether the Bin is empty.
-	 */
-	public isEmpty(): boolean {
-		return this.head !== undefined;
-	}
-
-	/**
 	 * Destroys all items currently in the Bin:
 	 * - Functions will be called
 	 * - RBXScriptConnections will be disconnected
@@ -51,5 +44,12 @@ export class Bin {
 			}
 			this.head = this.head.next;
 		}
+	}
+
+	/**
+	 * Checks whether the Bin is empty.
+	 */
+	public isEmpty(): boolean {
+		return this.head !== undefined;
 	}
 }
