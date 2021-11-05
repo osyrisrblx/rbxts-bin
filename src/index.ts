@@ -24,6 +24,9 @@ export class Bin {
 		return item;
 	}
 
+	/**
+	 * Checks whether the Bin is empty.
+	 */
 	public isEmpty(): boolean {
 		return this.head !== undefined;
 	}
