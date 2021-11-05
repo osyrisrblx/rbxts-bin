@@ -24,6 +24,10 @@ export class Bin {
 		return item;
 	}
 
+	public isEmpty(): boolean {
+		return this.head !== undefined;
+	}
+
 	/**
 	 * Destroys all items currently in the Bin:
 	 * - Functions will be called
