@@ -51,6 +51,6 @@ export class Bin {
 	 * Checks whether the Bin is empty.
 	 */
 	public isEmpty(): boolean {
-		return this.head !== undefined;
+		return this.head === undefined;
 	}
 }
