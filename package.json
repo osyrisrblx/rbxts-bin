@@ -1,6 +1,6 @@
 {
   "name": "@rbxts/bin",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Manages things to be cleaned up later",
   "main": "out/init.lua",
   "scripts": {
