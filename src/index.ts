@@ -1,11 +1,11 @@
 export namespace Bin {
-	export type Item = (() => unknown) | RBXScriptConnection | { destroy(): void } | { Destroy(): void };
+	export type Item = (() => unknown) | RBXScriptConnection | thread | { destroy(): void } | { Destroy(): void };
 }
 
 type Node = { next?: Node; item: Bin.Item };
 
 /**
- * Tracks connections, instances, functions, and objects to be later destroyed.
+ * Tracks connections, instances, functions, threads, and objects to be later destroyed.
  */
 export class Bin {
 	private head: Node | undefined;
@@ -15,6 +15,7 @@ export class Bin {
 	 * Adds an item into the Bin. This can be a:
 	 * - `() => unknown`
 	 * - RBXScriptConnection
+	 * - thread
 	 * - Object with `.destroy()` or `.Destroy()`
 	 */
 	public add<T extends Bin.Item>(item: T): T {
@@ -29,6 +30,7 @@ export class Bin {
 	 * Destroys all items currently in the Bin:
 	 * - Functions will be called
 	 * - RBXScriptConnections will be disconnected
+	 * - threads will be `task.cancel()`-ed
 	 * - Objects will be `.destroy()`-ed
 	 */
 	public destroy(): void {
@@ -38,6 +40,8 @@ export class Bin {
 				item();
 			} else if (typeIs(item, "RBXScriptConnection")) {
 				item.Disconnect();
+			} else if (typeIs(item, "thread")) {
+				task.cancel(item);
 			} else if ("destroy" in item) {
 				item.destroy();
 			} else if ("Destroy" in item) {
