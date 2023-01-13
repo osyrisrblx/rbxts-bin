@@ -35,19 +35,25 @@ export class Bin {
 	 */
 	public destroy(): void {
 		while (this.head) {
-			const item = this.head.item;
-			if (typeIs(item, "function")) {
-				item();
-			} else if (typeIs(item, "RBXScriptConnection")) {
-				item.Disconnect();
-			} else if (typeIs(item, "thread")) {
-				task.cancel(item);
-			} else if ("destroy" in item) {
-				item.destroy();
-			} else if ("Destroy" in item) {
-				item.Destroy();
+			const [success, problem] = pcall(() => {
+				const item = this.head.item;
+				if (typeIs(item, "function")) {
+					item();
+				} else if (typeIs(item, "RBXScriptConnection")) {
+					item.Disconnect();
+				} else if (typeIs(item, "thread")) {
+					task.cancel(item);
+				} else if ("destroy" in item) {
+					item.destroy();
+				} else if ("Destroy" in item) {
+					item.Destroy();
+				}
+				this.head = this.head.next;
+			});
+			
+			if (!success) {
+				warn(`Failed to destroy binned item: ${tostring(problem)}`);
 			}
-			this.head = this.head.next;
 		}
 	}
 
