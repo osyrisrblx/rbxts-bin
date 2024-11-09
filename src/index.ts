@@ -1,5 +1,5 @@
 export namespace Bin {
-	export type Item = (() => unknown) | RBXScriptConnection | thread | { destroy(): void } | { Destroy(): void };
+	export type Item = (() => unknown) | RBXScriptConnection | thread | { destroy(): void } | { Destroy(): void } | { disconnect(): void } | { Disconnect(): void };
 }
 
 type Node = { next?: Node; item: Bin.Item };
@@ -46,6 +46,10 @@ export class Bin {
 				item.destroy();
 			} else if ("Destroy" in item) {
 				item.Destroy();
+			} else if ("disconnect" in item) {
+				item.disconnect();
+			} else if ("Disconnect" in item) {
+				item.Disconnect();
 			}
 			this.head = this.head.next;
 		}
