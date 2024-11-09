@@ -49,6 +49,9 @@ export class Bin {
 			}
 			this.head = this.head.next;
 		}
+
+		// list is now empty, so we can clear the tail
+		this.tail = undefined;
 	}
 
 	/**
