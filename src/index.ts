@@ -47,7 +47,6 @@ export class Bin {
 			} else if ("Destroy" in item) {
 				item.Destroy();
 			}
-
 			this.head = this.head.next;
 		}
 
