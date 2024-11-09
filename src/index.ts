@@ -47,10 +47,12 @@ export class Bin {
 			} else if ("Destroy" in item) {
 				item.Destroy();
 			}
-		
-			if (this.head === this.tail) this.tail = undefined;
+
 			this.head = this.head.next;
 		}
+
+		// list is now empty, so we can clear the tail
+		this.tail = undefined;
 	}
 
 	/**
