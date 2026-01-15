@@ -3,5 +3,10 @@
 /include
 *.tsbuildinfo
 
+# Tests
+/tests/node_modules
+/tests/out
+/tests/include
+
 # Rokit
 /.rokit

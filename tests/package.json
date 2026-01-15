@@ -1,0 +1,11 @@
+{
+	"name": "bin-tests",
+	"version": "1.0.0",
+	"private": true,
+	"dependencies": {
+		"@rbxts/compiler-types": "^3.0.0-types.0",
+		"@rbxts/services": "^1.6.0",
+		"@rbxts/testez": "^0.4.2-ts.0",
+		"@rbxts/types": "^1.0.813"
+	}
+}
