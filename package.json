@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rbxtsc",
     "watch": "rbxtsc -w",
+    "lint": "eslint src/",
     "test": "npm run build && lune run tests/init.luau",
     "prepublishOnly": "npm run build"
   },
