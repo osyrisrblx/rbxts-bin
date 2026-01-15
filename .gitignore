@@ -2,3 +2,6 @@
 /out
 /include
 *.tsbuildinfo
+
+# Rokit
+/.rokit
